@@ -1,0 +1,7 @@
+background yes
+out_to_console yes
+out_to_x no
+update_interval 1
+ 
+TEXT
+^fg(\#ebac54) ^i(/home/ad/.xmonad/bitmaps_dzen/cpu.xbm) ^fg(\#FFFFFF)${cpu cpu1}% | ${cpu cpu2}% ^fg(\#ebac54) ^i(/home/ad/.xmonad/bitmaps_dzen/mem.xbm) ^fg(\#FFFFFF)${mem} ^fg(\#ebac54) ^i(/home/ad/.xmonad/bitmaps_dzen/battery.xbm) ^fg(\#ffffff)${exec acpi -b | grep "Battery 0" | awk '{print $4}'} ^fg(\#ebac54) ^i(/home/ad/.xmonad/bitmaps_dzen/volume.xbm) ^fg(\#ffffff)${exec amixer get Master | egrep -o "[0-9]+%" | head -1 | egrep -o "[0-9]*"}% ^fg(\#ebac54) ^i(/home/ad/.xmonad/bitmaps_dzen/clock.xbm) ^fg(\#FFFFFF) ${time %d %m %Y} ^fg(\#ebac54) ${time %R} 
