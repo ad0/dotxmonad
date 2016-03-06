@@ -27,14 +27,7 @@ import System.Exit
 myTerminal = "uxterm"
 myModMask = mod4Mask
 
-devWS  = "1:dev"
-pdfWS   = "2:pdf"
-mailWS  = "3:mail"
-mediaWS = "4:media"
-webWS   = "5:web"
-miscWS  = "6:misc"
-
-myWorkspaces = [devWS, pdfWS, mailWS, mediaWS, webWS, miscWS]
+myWorkspaces = map show [1..6]
 
 myXmonadBar = "dzen2 -x '0' -y '0' -h '24' -w '800' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E'"
 myStatusBar = "conky -c /home/ad/.xmonad/conky_dzen | dzen2 -x '800' -y '0' -w '568' -h '24' -ta 'r' -fg '#FFFFFF' -bg '#1B1D1E'"
@@ -48,7 +41,6 @@ main = do
     , workspaces            = myWorkspaces
     , modMask               = myModMask
     , layoutHook            = myLayoutHook
---    , manageHook            = myManageHook
     , logHook               = myLogHook dzenLeftBar >> fadeInactiveLogHook 0xdddddd
     , normalBorderColor     = myNormalBorderColor
     , focusedBorderColor    = myFocusedBorderColor
@@ -90,6 +82,7 @@ myBorderWidth = 2
 
 myKeys =
   [ ((mod4Mask,                       xK_p             ), runOrRaisePrompt defaultXPConfig)
+  , ((mod4Mask,                       xK_o             ), spawn "chromium")
   , ((mod4Mask .|. shiftMask,         xK_z             ), spawn "xscreensaver-command -lock")
   , ((mod4Mask,                       xK_b             ), sendMessage ToggleStruts)
   , ((mod4Mask,                       xK_F1            ), spawn "xdotool key XF86AudioPrev")
